@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="f1apiModelStoreContainer" CdmEntityContainer="f1apiEntities">
+    <EntitySetMapping Name="equipe">
+      <EntityTypeMapping TypeName="f1apiModel.equipe">
+        <MappingFragment StoreEntitySet="equipe">
+          <ScalarProperty Name="id_equipe" ColumnName="id_equipe" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gp">
+      <EntityTypeMapping TypeName="f1apiModel.gp">
+        <MappingFragment StoreEntitySet="gp">
+          <ScalarProperty Name="id_gp" ColumnName="id_gp" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="local_gp" ColumnName="local_gp" />
+          <ScalarProperty Name="data_gp" ColumnName="data_gp" />
+          <ScalarProperty Name="temporada_id_temporada" ColumnName="temporada_id_temporada" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="grid">
+      <EntityTypeMapping TypeName="f1apiModel.grid">
+        <MappingFragment StoreEntitySet="grid">
+          <ScalarProperty Name="sequencial" ColumnName="sequencial" />
+          <ScalarProperty Name="piloto_id_piloto" ColumnName="piloto_id_piloto" />
+          <ScalarProperty Name="gp_id_gp" ColumnName="gp_id_gp" />
+          <ScalarProperty Name="posicao" ColumnName="posicao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="piloto">
+      <EntityTypeMapping TypeName="f1apiModel.piloto">
+        <MappingFragment StoreEntitySet="piloto">
+          <ScalarProperty Name="id_piloto" ColumnName="id_piloto" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="sobrenome" ColumnName="sobrenome" />
+          <ScalarProperty Name="equipe_id_equipe" ColumnName="equipe_id_equipe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="temporada">
+      <EntityTypeMapping TypeName="f1apiModel.temporada">
+        <MappingFragment StoreEntitySet="temporada">
+          <ScalarProperty Name="id_temporada" ColumnName="id_temporada" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuario">
+      <EntityTypeMapping TypeName="f1apiModel.usuario">
+        <MappingFragment StoreEntitySet="usuario">
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="login_usuario" ColumnName="login_usuario" />
+          <ScalarProperty Name="senha" ColumnName="senha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuario_token">
+      <EntityTypeMapping TypeName="f1apiModel.usuario_token">
+        <MappingFragment StoreEntitySet="usuario_token">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="usuario_id_usuario" ColumnName="usuario_id_usuario" />
+          <ScalarProperty Name="num_acessos" ColumnName="num_acessos" />
+          <ScalarProperty Name="token" ColumnName="token" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

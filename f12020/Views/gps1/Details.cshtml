@@ -1,0 +1,58 @@
+﻿@model f12020.Models.gp
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>gp</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.nome)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.nome)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.local_gp)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.local_gp)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.data_gp)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.data_gp)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.temporada.nome)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.temporada.nome)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id_gp }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

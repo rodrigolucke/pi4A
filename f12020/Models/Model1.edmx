@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="f1apiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="equipe">
+          <Key>
+            <PropertyRef Name="id_equipe" />
+          </Key>
+          <Property Name="id_equipe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="gp">
+          <Key>
+            <PropertyRef Name="id_gp" />
+          </Key>
+          <Property Name="id_gp" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="local_gp" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="data_gp" Type="date" Nullable="false" />
+          <Property Name="temporada_id_temporada" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="grid">
+          <Key>
+            <PropertyRef Name="sequencial" />
+          </Key>
+          <Property Name="sequencial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="piloto_id_piloto" Type="int" Nullable="false" />
+          <Property Name="gp_id_gp" Type="int" Nullable="false" />
+          <Property Name="posicao" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="piloto">
+          <Key>
+            <PropertyRef Name="id_piloto" />
+          </Key>
+          <Property Name="id_piloto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="sobrenome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="equipe_id_equipe" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="temporada">
+          <Key>
+            <PropertyRef Name="id_temporada" />
+          </Key>
+          <Property Name="id_temporada" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="login_usuario" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="senha" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usuario_token">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usuario_id_usuario" Type="int" Nullable="false" />
+          <Property Name="num_acessos" Type="int" Nullable="false" />
+          <Property Name="token" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_ID_GRID_GP">
+          <End Role="gp" Type="Self.gp" Multiplicity="1" />
+          <End Role="grid" Type="Self.grid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gp">
+              <PropertyRef Name="id_gp" />
+            </Principal>
+            <Dependent Role="grid">
+              <PropertyRef Name="gp_id_gp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ID_PILOTO">
+          <End Role="piloto" Type="Self.piloto" Multiplicity="1" />
+          <End Role="grid" Type="Self.grid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="piloto">
+              <PropertyRef Name="id_piloto" />
+            </Principal>
+            <Dependent Role="grid">
+              <PropertyRef Name="piloto_id_piloto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ID_PILOTO_EQUIPE">
+          <End Role="equipe" Type="Self.equipe" Multiplicity="1" />
+          <End Role="piloto" Type="Self.piloto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="equipe">
+              <PropertyRef Name="id_equipe" />
+            </Principal>
+            <Dependent Role="piloto">
+              <PropertyRef Name="equipe_id_equipe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ID_TEMPORADA">
+          <End Role="temporada" Type="Self.temporada" Multiplicity="1" />
+          <End Role="gp" Type="Self.gp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="temporada">
+              <PropertyRef Name="id_temporada" />
+            </Principal>
+            <Dependent Role="gp">
+              <PropertyRef Name="temporada_id_temporada" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ID_USUARIO">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="usuario_token" Type="Self.usuario_token" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="usuario_token">
+              <PropertyRef Name="usuario_id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="f1apiModelStoreContainer">
+          <EntitySet Name="equipe" EntityType="Self.equipe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="gp" EntityType="Self.gp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="grid" EntityType="Self.grid" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="piloto" EntityType="Self.piloto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="temporada" EntityType="Self.temporada" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuario_token" EntityType="Self.usuario_token" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ID_GRID_GP" Association="Self.FK_ID_GRID_GP">
+            <End Role="gp" EntitySet="gp" />
+            <End Role="grid" EntitySet="grid" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ID_PILOTO" Association="Self.FK_ID_PILOTO">
+            <End Role="piloto" EntitySet="piloto" />
+            <End Role="grid" EntitySet="grid" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ID_PILOTO_EQUIPE" Association="Self.FK_ID_PILOTO_EQUIPE">
+            <End Role="equipe" EntitySet="equipe" />
+            <End Role="piloto" EntitySet="piloto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ID_TEMPORADA" Association="Self.FK_ID_TEMPORADA">
+            <End Role="temporada" EntitySet="temporada" />
+            <End Role="gp" EntitySet="gp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ID_USUARIO" Association="Self.FK_ID_USUARIO">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="usuario_token" EntitySet="usuario_token" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="f1apiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="equipe">
+          <Key>
+            <PropertyRef Name="id_equipe" />
+          </Key>
+          <Property Name="id_equipe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="piloto" Relationship="Self.FK_ID_PILOTO_EQUIPE" FromRole="equipe" ToRole="piloto" />
+        </EntityType>
+        <EntityType Name="gp">
+          <Key>
+            <PropertyRef Name="id_gp" />
+          </Key>
+          <Property Name="id_gp" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="local_gp" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="data_gp" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="temporada_id_temporada" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="grid" Relationship="Self.FK_ID_GRID_GP" FromRole="gp" ToRole="grid" />
+          <NavigationProperty Name="temporada" Relationship="Self.FK_ID_TEMPORADA" FromRole="gp" ToRole="temporada" />
+        </EntityType>
+        <EntityType Name="grid">
+          <Key>
+            <PropertyRef Name="sequencial" />
+          </Key>
+          <Property Name="sequencial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="piloto_id_piloto" Type="Int32" Nullable="false" />
+          <Property Name="gp_id_gp" Type="Int32" Nullable="false" />
+          <Property Name="posicao" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="gp" Relationship="Self.FK_ID_GRID_GP" FromRole="grid" ToRole="gp" />
+          <NavigationProperty Name="piloto" Relationship="Self.FK_ID_PILOTO" FromRole="grid" ToRole="piloto" />
+        </EntityType>
+        <EntityType Name="piloto">
+          <Key>
+            <PropertyRef Name="id_piloto" />
+          </Key>
+          <Property Name="id_piloto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sobrenome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="equipe_id_equipe" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="equipe" Relationship="Self.FK_ID_PILOTO_EQUIPE" FromRole="piloto" ToRole="equipe" />
+          <NavigationProperty Name="grid" Relationship="Self.FK_ID_PILOTO" FromRole="piloto" ToRole="grid" />
+        </EntityType>
+        <EntityType Name="temporada">
+          <Key>
+            <PropertyRef Name="id_temporada" />
+          </Key>
+          <Property Name="id_temporada" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="gp" Relationship="Self.FK_ID_TEMPORADA" FromRole="temporada" ToRole="gp" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login_usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="senha" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="usuario_token" Relationship="Self.FK_ID_USUARIO" FromRole="usuario" ToRole="usuario_token" />
+        </EntityType>
+        <EntityType Name="usuario_token">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usuario_id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="num_acessos" Type="Int32" Nullable="false" />
+          <Property Name="token" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="usuario" Relationship="Self.FK_ID_USUARIO" FromRole="usuario_token" ToRole="usuario" />
+        </EntityType>
+        <Association Name="FK_ID_PILOTO_EQUIPE">
+          <End Role="equipe" Type="Self.equipe" Multiplicity="1" />
+          <End Role="piloto" Type="Self.piloto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="equipe">
+              <PropertyRef Name="id_equipe" />
+            </Principal>
+            <Dependent Role="piloto">
+              <PropertyRef Name="equipe_id_equipe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ID_GRID_GP">
+          <End Role="gp" Type="Self.gp" Multiplicity="1" />
+          <End Role="grid" Type="Self.grid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gp">
+              <PropertyRef Name="id_gp" />
+            </Principal>
+            <Dependent Role="grid">
+              <PropertyRef Name="gp_id_gp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ID_TEMPORADA">
+          <End Role="temporada" Type="Self.temporada" Multiplicity="1" />
+          <End Role="gp" Type="Self.gp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="temporada">
+              <PropertyRef Name="id_temporada" />
+            </Principal>
+            <Dependent Role="gp">
+              <PropertyRef Name="temporada_id_temporada" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ID_PILOTO">
+          <End Role="piloto" Type="Self.piloto" Multiplicity="1" />
+          <End Role="grid" Type="Self.grid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="piloto">
+              <PropertyRef Name="id_piloto" />
+            </Principal>
+            <Dependent Role="grid">
+              <PropertyRef Name="piloto_id_piloto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ID_USUARIO">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="usuario_token" Type="Self.usuario_token" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="usuario_token">
+              <PropertyRef Name="usuario_id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="f1apiEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="equipe" EntityType="Self.equipe" />
+          <EntitySet Name="gp" EntityType="Self.gp" />
+          <EntitySet Name="grid" EntityType="Self.grid" />
+          <EntitySet Name="piloto" EntityType="Self.piloto" />
+          <EntitySet Name="temporada" EntityType="Self.temporada" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" />
+          <EntitySet Name="usuario_token" EntityType="Self.usuario_token" />
+          <AssociationSet Name="FK_ID_PILOTO_EQUIPE" Association="Self.FK_ID_PILOTO_EQUIPE">
+            <End Role="equipe" EntitySet="equipe" />
+            <End Role="piloto" EntitySet="piloto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ID_GRID_GP" Association="Self.FK_ID_GRID_GP">
+            <End Role="gp" EntitySet="gp" />
+            <End Role="grid" EntitySet="grid" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ID_TEMPORADA" Association="Self.FK_ID_TEMPORADA">
+            <End Role="temporada" EntitySet="temporada" />
+            <End Role="gp" EntitySet="gp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ID_PILOTO" Association="Self.FK_ID_PILOTO">
+            <End Role="piloto" EntitySet="piloto" />
+            <End Role="grid" EntitySet="grid" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ID_USUARIO" Association="Self.FK_ID_USUARIO">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="usuario_token" EntitySet="usuario_token" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="f1apiModelStoreContainer" CdmEntityContainer="f1apiEntities">
+          <EntitySetMapping Name="equipe">
+            <EntityTypeMapping TypeName="f1apiModel.equipe">
+              <MappingFragment StoreEntitySet="equipe">
+                <ScalarProperty Name="id_equipe" ColumnName="id_equipe" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gp">
+            <EntityTypeMapping TypeName="f1apiModel.gp">
+              <MappingFragment StoreEntitySet="gp">
+                <ScalarProperty Name="id_gp" ColumnName="id_gp" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="local_gp" ColumnName="local_gp" />
+                <ScalarProperty Name="data_gp" ColumnName="data_gp" />
+                <ScalarProperty Name="temporada_id_temporada" ColumnName="temporada_id_temporada" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="grid">
+            <EntityTypeMapping TypeName="f1apiModel.grid">
+              <MappingFragment StoreEntitySet="grid">
+                <ScalarProperty Name="sequencial" ColumnName="sequencial" />
+                <ScalarProperty Name="piloto_id_piloto" ColumnName="piloto_id_piloto" />
+                <ScalarProperty Name="gp_id_gp" ColumnName="gp_id_gp" />
+                <ScalarProperty Name="posicao" ColumnName="posicao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="piloto">
+            <EntityTypeMapping TypeName="f1apiModel.piloto">
+              <MappingFragment StoreEntitySet="piloto">
+                <ScalarProperty Name="id_piloto" ColumnName="id_piloto" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="sobrenome" ColumnName="sobrenome" />
+                <ScalarProperty Name="equipe_id_equipe" ColumnName="equipe_id_equipe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="temporada">
+            <EntityTypeMapping TypeName="f1apiModel.temporada">
+              <MappingFragment StoreEntitySet="temporada">
+                <ScalarProperty Name="id_temporada" ColumnName="id_temporada" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="f1apiModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="login_usuario" ColumnName="login_usuario" />
+                <ScalarProperty Name="senha" ColumnName="senha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario_token">
+            <EntityTypeMapping TypeName="f1apiModel.usuario_token">
+              <MappingFragment StoreEntitySet="usuario_token">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="usuario_id_usuario" ColumnName="usuario_id_usuario" />
+                <ScalarProperty Name="num_acessos" ColumnName="num_acessos" />
+                <ScalarProperty Name="token" ColumnName="token" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
