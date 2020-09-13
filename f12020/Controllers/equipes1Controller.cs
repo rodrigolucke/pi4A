@@ -15,10 +15,8 @@ namespace f12020.Controllers
         private f1apiEntities db = new f1apiEntities();
 
         // GET: equipes1
-        public ActionResult Index()
-        {
-            return View(db.equipe.ToList());
-        }
+        [Authorize(Roles = "ok,usuarios")]
+        public ActionResult Index() => View(db.equipe.ToList());
 
         // GET: equipes1/Details/5
         public ActionResult Details(int? id)

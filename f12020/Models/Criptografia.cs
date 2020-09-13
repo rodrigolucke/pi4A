@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using CryptSharp;
 
-namespace ControleAcesso.Models
+namespace f12020.Models
 {
     public static class Criptografia
     {

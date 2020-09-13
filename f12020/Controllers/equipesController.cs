@@ -6,26 +6,29 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Web.Http;
 using System.Web.Http.Description;
 using f12020.Models;
 
 namespace f12020.Controllers
 {
-    public class equipesController : ApiController
+    [BasicAuthentication]
+    public class equipesController : AuthenticatorController
     {
+        string t = Thread.CurrentPrincipal.Identity.Name;
         private f1apiEntities db = new f1apiEntities();
+        // GET: api/equipes/token
        
-        // GET: api/equipes
         public IQueryable<equipe> Getequipe(){
 
-            return db.equipe;
+            return  db.equipe;
         }
 
         // GET: api/equipes/5
         [ResponseType(typeof(equipe))]
         public IHttpActionResult Getequipe(int id)
-        {
+        {   
             equipe equipe = db.equipe.Find(id);
             if (equipe == null)
             {
@@ -39,6 +42,7 @@ namespace f12020.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult Putequipe(int id, equipe equipe)
         {
+         
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

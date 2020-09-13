@@ -50,7 +50,16 @@ namespace f12020.Controllers
         {
             if (ModelState.IsValid)
             {
+              
                 db.usuario.Add(usuario);
+                db.SaveChanges();
+                usuario_token t = new usuario_token();
+                t.usuario_id_usuario = usuario.id_usuario;
+                Random rnd = new Random();
+                t.num_acessos = 0;
+                rnd.Next(100, 1000000);
+                t.token = rnd.Next(100, 1000000).ToString();
+                db.usuario_token.Add(t);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

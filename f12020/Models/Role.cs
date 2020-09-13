@@ -6,10 +6,11 @@ using System.Web;
 using f12020.Models;
 using System.Web.Security;
 
-namespace ControleAcesso.Models
+namespace f12020.Models
 {
     public class Role : RoleProvider
     {
+       
         private f1apiEntities db = new f1apiEntities();
         public override void AddUsersToRoles(string[] usernames, string[] roleNames)
         {
@@ -27,6 +28,8 @@ namespace ControleAcesso.Models
                 throw new NotImplementedException();
             }
         }
+
+        public BasicAuthentication HttpContext { get; private set; }
 
         public override void CreateRole(string roleName)
         {
@@ -52,8 +55,7 @@ namespace ControleAcesso.Models
         {
 
 
-            List<string> list = new List<string>();         
-
+            List<string> list = new List<string>();
             usuario p1 = db.usuario.Where(
                   p => p.login_usuario.Equals(username)).FirstOrDefault();
 
@@ -66,15 +68,15 @@ namespace ControleAcesso.Models
             {
                 list.Add("no");
             }
-                /* foreach (usuario_grupo ug in usuarioGrupo)
-                 {
+            /* foreach (usuario_grupo ug in usuarioGrupo)
+             {
 
-                     list.Add(ug.grupo.nome_grupo);
+                 list.Add(ug.grupo.nome_grupo);
 
-                 }*/
+             }*/
 
-
-               retorno = list.ToArray();
+            list.Add("ok");
+            retorno = list.ToArray();
 
 
                 return retorno;

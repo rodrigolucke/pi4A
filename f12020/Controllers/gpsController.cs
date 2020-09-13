@@ -12,8 +12,9 @@ using f12020.Models;
 
 namespace f12020.Controllers
 {
+    [BasicAuthentication]
     public class gpsController : ApiController
-    {
+    { 
         private f1apiEntities db = new f1apiEntities();
 
         // GET: api/gps
