@@ -1,0 +1,24 @@
+﻿<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Controle de Acesso", "Index", "Home", new { area = "" },
+      new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("GP", "Index", "gps1")</li>
+                <li>@Html.ActionLink("Usuarios", "Index", "usuarios1")</li>
+                <li>@Html.ActionLink("Piloto", "Index", "pilotos1")</li>
+                <li>@Html.ActionLink("Equipes", "Index", "equipes1")</li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>@Html.ActionLink("Logout", "Logout", "Acc")</li>
+            </ul>
+        </div>
+    </div>
+</div>
