@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="f1apiModelStoreContainer" CdmEntityContainer="f1apiEntities">
+  <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities">
     <EntitySetMapping Name="equipe">
-      <EntityTypeMapping TypeName="f1apiModel.equipe">
+      <EntityTypeMapping TypeName="Database1Model.equipe">
         <MappingFragment StoreEntitySet="equipe">
           <ScalarProperty Name="id_equipe" ColumnName="id_equipe" />
           <ScalarProperty Name="nome" ColumnName="nome" />
@@ -10,7 +10,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="gp">
-      <EntityTypeMapping TypeName="f1apiModel.gp">
+      <EntityTypeMapping TypeName="Database1Model.gp">
         <MappingFragment StoreEntitySet="gp">
           <ScalarProperty Name="id_gp" ColumnName="id_gp" />
           <ScalarProperty Name="nome" ColumnName="nome" />
@@ -21,7 +21,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="grid">
-      <EntityTypeMapping TypeName="f1apiModel.grid">
+      <EntityTypeMapping TypeName="Database1Model.grid">
         <MappingFragment StoreEntitySet="grid">
           <ScalarProperty Name="sequencial" ColumnName="sequencial" />
           <ScalarProperty Name="piloto_id_piloto" ColumnName="piloto_id_piloto" />
@@ -31,7 +31,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="piloto">
-      <EntityTypeMapping TypeName="f1apiModel.piloto">
+      <EntityTypeMapping TypeName="Database1Model.piloto">
         <MappingFragment StoreEntitySet="piloto">
           <ScalarProperty Name="id_piloto" ColumnName="id_piloto" />
           <ScalarProperty Name="nome" ColumnName="nome" />
@@ -41,7 +41,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="temporada">
-      <EntityTypeMapping TypeName="f1apiModel.temporada">
+      <EntityTypeMapping TypeName="Database1Model.temporada">
         <MappingFragment StoreEntitySet="temporada">
           <ScalarProperty Name="id_temporada" ColumnName="id_temporada" />
           <ScalarProperty Name="nome" ColumnName="nome" />
@@ -49,7 +49,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="usuario">
-      <EntityTypeMapping TypeName="f1apiModel.usuario">
+      <EntityTypeMapping TypeName="Database1Model.usuario">
         <MappingFragment StoreEntitySet="usuario">
           <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
           <ScalarProperty Name="login_usuario" ColumnName="login_usuario" />
@@ -58,7 +58,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="usuario_token">
-      <EntityTypeMapping TypeName="f1apiModel.usuario_token">
+      <EntityTypeMapping TypeName="Database1Model.usuario_token">
         <MappingFragment StoreEntitySet="usuario_token">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="usuario_id_usuario" ColumnName="usuario_id_usuario" />

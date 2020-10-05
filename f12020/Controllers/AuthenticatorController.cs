@@ -10,7 +10,7 @@ namespace f12020.Controllers
 {
     public class AuthenticatorController : ApiController
     {
-        private f1apiEntities db = new f1apiEntities();
+        private Database1Entities db = new Database1Entities();
         [Route("api")]
         public Boolean AutenticaToken(int idusuario, String token)
         {

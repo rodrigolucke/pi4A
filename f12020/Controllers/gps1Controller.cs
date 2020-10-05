@@ -12,8 +12,7 @@ namespace f12020.Controllers
 {
     public class gps1Controller : Controller
     {
-        private f1apiEntities db = new f1apiEntities();
-
+        private Database1Entities db = new Database1Entities();
         // GET: gps1
         public ActionResult Index()
         {

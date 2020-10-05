@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="f1apiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="equipe">
     <Key>
       <PropertyRef Name="id_equipe" />
@@ -119,7 +119,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="f1apiModelStoreContainer">
+  <EntityContainer Name="Database1ModelStoreContainer">
     <EntitySet Name="equipe" EntityType="Self.equipe" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="gp" EntityType="Self.gp" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="grid" EntityType="Self.grid" Schema="dbo" store:Type="Tables" />

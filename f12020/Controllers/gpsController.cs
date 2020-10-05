@@ -14,13 +14,16 @@ namespace f12020.Controllers
 {
     [BasicAuthentication]
     public class gpsController : ApiController
-    { 
-        private f1apiEntities db = new f1apiEntities();
+    {
+        private Database1Entities db = new Database1Entities();
 
         // GET: api/gps
-        public IQueryable<gp> Getgp()
+        public String Getgp()
         {
-            return db.gp;
+            grid grid = new grid();
+
+            String valorPrevistoClinca = db.grid.Sum(g => g.posicao).ToString();
+            return valorPrevistoClinca;
         }
 
         // GET: api/gps/5

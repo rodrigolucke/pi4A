@@ -1,0 +1,53 @@
+﻿@model IEnumerable<f12020.Models.grid>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.posicao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.gp.nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.piloto.nome)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.posicao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.gp.nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.piloto.nome)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.sequencial }) |
+                @Html.ActionLink("Details", "Details", new { id=item.sequencial }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.sequencial })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

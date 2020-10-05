@@ -19,15 +19,15 @@ namespace f12020.Controllers
 {
     public class AccController : Controller
     {
-   
-            private f1apiEntities db = new f1apiEntities();
+
+        private Database1Entities db = new Database1Entities();
 
         // POST: usuarios/Create
         // Para se proteger de mais ataques, habilite as propriedades específicas às quais você quer se associar. Para 
         // obter mais detalhes, veja https://go.microsoft.com/fwlink/?LinkId=317598.
 
 
-        
+
         // <param name = "login" ></ param >
         // < param name="returnUrl"></param>
         // <returns></returns>

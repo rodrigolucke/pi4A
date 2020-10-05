@@ -12,7 +12,7 @@ namespace f12020.Controllers
 {
     public class equipes1Controller : Controller
     {
-        private f1apiEntities db = new f1apiEntities();
+        private Database1Entities db = new Database1Entities();
 
         // GET: equipes1
         [Authorize(Roles = "ok,usuarios")]

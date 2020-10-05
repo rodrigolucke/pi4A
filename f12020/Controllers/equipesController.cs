@@ -17,9 +17,9 @@ namespace f12020.Controllers
     public class equipesController : AuthenticatorController
     {
         string t = Thread.CurrentPrincipal.Identity.Name;
-        private f1apiEntities db = new f1apiEntities();
+        private Database1Entities db = new Database1Entities();
         // GET: api/equipes/token
-       
+
         public IQueryable<equipe> Getequipe(){
 
             return  db.equipe;

@@ -1,0 +1,50 @@
+﻿@model f12020.Models.grid
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>grid</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.posicao)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.posicao)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.gp.nome)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.gp.nome)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.piloto.nome)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.piloto.nome)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.sequencial }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

@@ -13,10 +13,10 @@ namespace f12020.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class f1apiEntities : DbContext
+    public partial class Database1Entities : DbContext
     {
-        public f1apiEntities()
-            : base("name=f1apiEntities")
+        public Database1Entities()
+            : base("name=Database1Entities")
         {
         }
     

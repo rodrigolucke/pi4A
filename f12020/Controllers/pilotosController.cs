@@ -14,7 +14,7 @@ namespace f12020.Controllers
 {
     public class pilotosController : ApiController
     {
-        private f1apiEntities db = new f1apiEntities();
+        private Database1Entities db = new Database1Entities();
 
         // GET: api/pilotos
         public IQueryable<piloto> Getpiloto()

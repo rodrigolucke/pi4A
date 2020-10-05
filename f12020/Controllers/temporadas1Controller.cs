@@ -12,7 +12,7 @@ namespace f12020.Controllers
 {
     public class temporadas1Controller : Controller
     {
-        private f1apiEntities db = new f1apiEntities();
+        private Database1Entities db = new Database1Entities();
 
         // GET: temporadas1
         public ActionResult Index()

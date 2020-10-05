@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="f1apiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="equipe">
           <Key>
             <PropertyRef Name="id_equipe" />
@@ -124,7 +124,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="f1apiModelStoreContainer">
+        <EntityContainer Name="Database1ModelStoreContainer">
           <EntitySet Name="equipe" EntityType="Self.equipe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="gp" EntityType="Self.gp" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="grid" EntityType="Self.grid" Schema="dbo" store:Type="Tables" />
@@ -157,7 +157,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="f1apiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="equipe">
           <Key>
             <PropertyRef Name="id_equipe" />
@@ -287,7 +287,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="f1apiEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Database1Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="equipe" EntityType="Self.equipe" />
           <EntitySet Name="gp" EntityType="Self.gp" />
           <EntitySet Name="grid" EntityType="Self.grid" />
@@ -321,9 +321,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="f1apiModelStoreContainer" CdmEntityContainer="f1apiEntities">
+        <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities">
           <EntitySetMapping Name="equipe">
-            <EntityTypeMapping TypeName="f1apiModel.equipe">
+            <EntityTypeMapping TypeName="Database1Model.equipe">
               <MappingFragment StoreEntitySet="equipe">
                 <ScalarProperty Name="id_equipe" ColumnName="id_equipe" />
                 <ScalarProperty Name="nome" ColumnName="nome" />
@@ -331,7 +331,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="gp">
-            <EntityTypeMapping TypeName="f1apiModel.gp">
+            <EntityTypeMapping TypeName="Database1Model.gp">
               <MappingFragment StoreEntitySet="gp">
                 <ScalarProperty Name="id_gp" ColumnName="id_gp" />
                 <ScalarProperty Name="nome" ColumnName="nome" />
@@ -342,7 +342,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="grid">
-            <EntityTypeMapping TypeName="f1apiModel.grid">
+            <EntityTypeMapping TypeName="Database1Model.grid">
               <MappingFragment StoreEntitySet="grid">
                 <ScalarProperty Name="sequencial" ColumnName="sequencial" />
                 <ScalarProperty Name="piloto_id_piloto" ColumnName="piloto_id_piloto" />
@@ -352,7 +352,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="piloto">
-            <EntityTypeMapping TypeName="f1apiModel.piloto">
+            <EntityTypeMapping TypeName="Database1Model.piloto">
               <MappingFragment StoreEntitySet="piloto">
                 <ScalarProperty Name="id_piloto" ColumnName="id_piloto" />
                 <ScalarProperty Name="nome" ColumnName="nome" />
@@ -362,7 +362,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="temporada">
-            <EntityTypeMapping TypeName="f1apiModel.temporada">
+            <EntityTypeMapping TypeName="Database1Model.temporada">
               <MappingFragment StoreEntitySet="temporada">
                 <ScalarProperty Name="id_temporada" ColumnName="id_temporada" />
                 <ScalarProperty Name="nome" ColumnName="nome" />
@@ -370,7 +370,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="usuario">
-            <EntityTypeMapping TypeName="f1apiModel.usuario">
+            <EntityTypeMapping TypeName="Database1Model.usuario">
               <MappingFragment StoreEntitySet="usuario">
                 <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
                 <ScalarProperty Name="login_usuario" ColumnName="login_usuario" />
@@ -379,7 +379,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="usuario_token">
-            <EntityTypeMapping TypeName="f1apiModel.usuario_token">
+            <EntityTypeMapping TypeName="Database1Model.usuario_token">
               <MappingFragment StoreEntitySet="usuario_token">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="usuario_id_usuario" ColumnName="usuario_id_usuario" />

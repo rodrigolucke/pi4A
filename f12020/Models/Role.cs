@@ -10,8 +10,7 @@ namespace f12020.Models
 {
     public class Role : RoleProvider
     {
-       
-        private f1apiEntities db = new f1apiEntities();
+         private Database1Entities db = new Database1Entities();
         public override void AddUsersToRoles(string[] usernames, string[] roleNames)
         {
             throw new NotImplementedException();

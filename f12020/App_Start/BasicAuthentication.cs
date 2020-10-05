@@ -15,7 +15,7 @@ namespace f12020
     public class BasicAuthentication : AuthorizationFilterAttribute
     {
 
-        private f1apiEntities db = new f1apiEntities();
+        private Database1Entities db = new Database1Entities();
         public override void OnAuthorization(HttpActionContext actionContext)
         {
             string token = actionContext.Request.RequestUri.Segments[3].Split('/')[0];

@@ -12,7 +12,7 @@ namespace f12020.Controllers
 {
     public class usuarios1Controller : Controller
     {
-        private f1apiEntities db = new f1apiEntities();
+        private Database1Entities db = new Database1Entities();
 
         // GET: usuarios1
         public ActionResult Index()
