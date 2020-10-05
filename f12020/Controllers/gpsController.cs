@@ -18,12 +18,10 @@ namespace f12020.Controllers
         private Database1Entities db = new Database1Entities();
 
         // GET: api/gps
-        public String Getgp()
+        public IQueryable<gp> Getequipe()
         {
-            grid grid = new grid();
 
-            String valorPrevistoClinca = db.grid.Sum(g => g.posicao).ToString();
-            return valorPrevistoClinca;
+            return db.gp;
         }
 
         // GET: api/gps/5
