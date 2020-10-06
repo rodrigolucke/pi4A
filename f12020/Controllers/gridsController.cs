@@ -36,47 +36,20 @@ namespace f12020.Controllers
                 })
              .ToArray();
 
-            /*  var teamTotalScores =
-              from pg in grid
-              group grid by pg.nome into gridPiloto
-              select new 
-              {
-                  NomePiloto = gridPiloto.Key,
-                  Pontuação = gridPiloto.Sum(x => x.),
-              };
-            */
+         
 
-            var sells = grid
+            var score = grid
             .GroupBy(a => a.nome)
             .Select(a => new { Score = a.Sum(b => b.score), Piloto = a.Key })
             .OrderByDescending(a => a.Score)
-
             .ToList();
-            /*var teamTotalScores =
-            from pg in grid
-            group grid by pg.nome into gridPiloto
-            select new
-            {
-                NomePiloto = gridPiloto.Key,
-                Pontuação = gridPiloto.Sum(x => x.score),
-            };*/
-
-            /*Sum(b =>  b.posicao == 1 ? 10 : 
-
-                    b.posicao == 2 ? 8 :
-                    b.posicao == 3 ? 7 : 
-                    b.posicao == 3 ? 6 : 1);*/
-            /* var sums = from d in db.grid
-                         Group by d. // or primary key
-                         Into TotalRate = sum(d.Rate),
-                         TotalAdditionalCharges = sum(d.AdditionalCharges)
-                         Select TotalRate, TotalAdditionalCharges*/
+           
 
 
             System.Diagnostics.Debug.Write(grid);
 
 
-            return sells.ToArray();
+            return score.ToArray();
 
         }
 
